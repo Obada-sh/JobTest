@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Post;
+use App\Models\DeviceUserPivot;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,5 +54,9 @@ class User extends Authenticatable
     return $this->hasMany(Post::class);
 }
 
+public function device_user_pivot()
+    {
+        return $this->hasMany(DeviceUserPivot::class);
+    }
 
 }
