@@ -17,6 +17,7 @@ class RegisterController extends Controller
                 'name' => 'bail|required|string',
                 'email' => 'bail|required|string|unique:users,email',
                 'password' => 'bail|required|confirmed|string|min:6',
+                'role' =>'bail|required|in:Admin,User',
                 'birth_date' => ['bail','required', 'date', function ($attribute, $value, $fail) {
                     $minimumAge = 18;
                     $birthday = Carbon::parse($value);
@@ -41,6 +42,7 @@ class RegisterController extends Controller
             'name'=>$fields['name'],
             'email'=>$fields['email'],
             'password'=>bcrypt($fields['password']),
+            'role'=>$fields['role'],
         ]);
 
         $token = $user->createToken('loginToken')->plainTextToken;
