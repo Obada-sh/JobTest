@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsConfirmation;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShowNonPublishedPostsController;
 
@@ -32,4 +33,6 @@ Route::middleware('auth:sanctum')->post('/post' , [PostController::class,'post']
 Route::middleware(['auth:sanctum','adminAccess'])->group(function(){
 
     Route::get('/show',[ShowNonPublishedPostsController::class ,'show']);
+    Route::post('/allaw/{id}',[PostsConfirmation::class ,'allaw']);
+    Route::post('/disallaw/{id}',[PostsConfirmation::class ,'disallaw']);
 });
