@@ -36,3 +36,5 @@ Route::middleware(['auth:sanctum','adminAccess'])->group(function(){
     Route::post('/allaw/{id}',[PostsConfirmation::class ,'allaw']);
     Route::post('/disallaw/{id}',[PostsConfirmation::class ,'disallaw']);
 });
+
+Route::get('/posts', [PostController::class, 'show'])->name('posts.show');
